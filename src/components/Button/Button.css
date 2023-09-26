@@ -1,0 +1,134 @@
+.right-btn-wrapper {
+  margin-top: 15px;
+}
+.right-btn-wrapper .getNow-btn {
+  padding: 10px 15px;
+  margin-left: 4px;
+  display: inline-flex;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  /* color: #999; */
+  align-items: center;
+  cursor: pointer;
+}
+
+.join-btn {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  margin-top: 12px;
+}
+
+.join-btn .getNow-btn {
+  border-radius: 0 !important;
+  border-width: 0 !important;
+  font-size: 14px !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+.join-btn .getNow-btn:first-child {
+  border-right-width: 1px !important;
+}
+
+.cta-wrapper {
+  text-align: center;
+}
+
+.cta-wrapper .main-cta {
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.login-btn {
+  background: green;
+  display: block;
+  width: 100%;
+  color: #fff !important;
+  font-weight: 600;
+  padding: 16px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 18px 0;
+}
+.login-btn:hover {
+  background: rgb(4, 190, 4);
+}
+
+.combinedButton {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  height: 38px;
+  /* margin-right: -15px; */
+}
+
+.combinedButton .scissor {
+  color: rgb(58, 191, 191);
+}
+
+.combinedButton .scissor {
+  margin-right: 5px;
+  /* color: red; */
+  width: 20%;
+  color: rgb(58, 191, 191);
+}
+
+.combinedButton .btnSeprator {
+  border-right: solid;
+  /* height: 100%; */
+  border-width: 1px;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 6px; */
+  color: #999;
+  height: 100%;
+}
+
+.combinedButton .btn1 {
+  width: 80%;
+  padding-right: 10px;
+  font-size: 12px;
+  font-family: Calibri, sans-serif;
+  font-weight: 500;
+  text-align: left;
+}
+
+.combinedButton .btn2 {
+  /* width: 40%; */
+  padding-right: 10px;
+  font-size: 12px;
+  font-family: Calibri, sans-serif;
+  font-weight: 500;
+  text-align: left;
+}
+.combinedButton .align {
+  width: 50%;
+  align-content: end;
+  align-items: center;
+  padding-left: 5px;
+}
+.btn2:hover {
+  color: #13b0c5;
+}
+.btn1:hover {
+  color: #13b0c5;
+}
+
+.getNow-btn:hover {
+  color: #13b0c5;
+}
+.add-jambo:active {
+  background-color: #f7f7f7;
+}
+.trim-add:active {
+  background-color: #f7f7f7;
+}
+.getNow-btn:active {
+  background-color: #f7f7f7;
+}
