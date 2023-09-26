@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import DropDownTag, { IDropdown } from "./Dropdown";
 import { useAppDispatch } from "../redux/hooks";
 import { setPair } from "../redux/slices/dataSlice";
 
 function PairSelection() {
   const dispatch = useAppDispatch();
-  const [dropDownData, setDropDownData] = useState<IDropdown[]>([
+  const [dropDownData] = useState<IDropdown[]>([
     { id: 1, name: "XAU/USD" },
     { id: 2, name: "GBP/USD" },
     { id: 3, name: "EUR/USD" }

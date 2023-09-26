@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import DropDownTag, { IDropdown } from "./Dropdown";
 import { useAppDispatch } from "../redux/hooks";
-import { setAmount, setPair } from "../redux/slices/dataSlice";
+import { setAmount } from "../redux/slices/dataSlice";
 
 function AmountSelection() {
   const dispatch = useAppDispatch();
-  const [dropDownData, setDropDownData] = useState<IDropdown[]>([
+  const [dropDownData] = useState<IDropdown[]>([
     { id: 1, name: "5USD" },
     { id: 2, name: "10USD" },
     { id: 3, name: "15USD" },

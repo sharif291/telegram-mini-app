@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import PairSelection from "../components/PairSelection";
 import AmountSelection from "../components/AmountSelection";
 import DirectionSelection from "../components/DirectionSelection";
@@ -6,7 +6,7 @@ import PredictionComponent from "../components/PredictionComponent";
 import PrimaryButton from "../components/Button/PrimaryButton";
 
 function home() {
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
   const [runPrediction, setRunPrediction] = useState(false);
   const toogleRunPrediction = () => {
     setRunPrediction(!runPrediction);

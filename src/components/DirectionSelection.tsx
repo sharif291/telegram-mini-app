@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import DropDownTag, { IDropdown } from "./Dropdown";
 import { useAppDispatch } from "../redux/hooks";
-import { setDirection, setPair } from "../redux/slices/dataSlice";
+import { setDirection } from "../redux/slices/dataSlice";
 
 function DirectionSelection() {
   const dispatch = useAppDispatch();
-  const [dropDownData, setDropDownData] = useState<IDropdown[]>([
+  const [dropDownData] = useState<IDropdown[]>([
     { id: 1, name: "UP" },
     { id: 2, name: "DOWN" },
   ]);
