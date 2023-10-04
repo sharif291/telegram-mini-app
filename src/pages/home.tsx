@@ -8,7 +8,7 @@ import PrimaryButton from "../components/Button/PrimaryButton";
 import { TonConnectButton, useTonConnectUI } from "@tonconnect/ui-react";
 
 function home() {
-  const [tonConnectUI, setOptions] = useTonConnectUI();
+  const [tonConnectUI] = useTonConnectUI();
 
   const [loading] = useState(false);
   const [runPrediction, setRunPrediction] = useState(false);
