@@ -5,11 +5,15 @@ import DirectionSelection from "../components/DirectionSelection";
 import PredictionComponent from "../components/PredictionComponent";
 import PrimaryButton from "../components/Button/PrimaryButton";
 
-import { TonConnectButton, useTonConnectUI } from "@tonconnect/ui-react";
+import {
+  TonConnectButton,
+  useTonConnectUI,
+  useTonWallet,
+} from "@tonconnect/ui-react";
 
 function home() {
   const [tonConnectUI] = useTonConnectUI();
-
+  const wallet = useTonWallet();
   const [loading] = useState(false);
   const [runPrediction, setRunPrediction] = useState(false);
   const toogleRunPrediction = () => {
@@ -31,14 +35,15 @@ function home() {
       <div className=" m-auto">
         <TonConnectButton style={{ margin: "auto" }} />
       </div>
-
-      <PrimaryButton
-        text={"Send transaction"}
-        isDisble={false}
-        buttonHandler={() => {
-          tonConnectUI.sendTransaction(myTransaction);
-        }}
-      ></PrimaryButton>
+      {wallet?.account?.address && (
+        <PrimaryButton
+          text={"Send transaction"}
+          isDisble={false}
+          buttonHandler={() => {
+            tonConnectUI.sendTransaction(myTransaction);
+          }}
+        ></PrimaryButton>
+      )}
 
       {runPrediction ? (
         <PredictionComponent
