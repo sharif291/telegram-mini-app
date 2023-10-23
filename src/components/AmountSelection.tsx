@@ -6,9 +6,9 @@ import { setAmount } from "../redux/slices/dataSlice";
 function AmountSelection() {
   const dispatch = useAppDispatch();
   const [dropDownData] = useState<IDropdown[]>([
-    { id: 1, name: "5USD" },
-    { id: 2, name: "10USD" },
-    { id: 3, name: "15USD" },
+    { id: 1, name: "5" },
+    { id: 2, name: "10" },
+    { id: 3, name: "15" },
   ]);
   const searchHandler = (data: IDropdown[], searchValue: string) => {
     const filterList = data?.filter((l) =>

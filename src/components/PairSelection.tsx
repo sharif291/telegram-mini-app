@@ -6,7 +6,7 @@ import { setPair } from "../redux/slices/dataSlice";
 function PairSelection() {
   const dispatch = useAppDispatch();
   const [dropDownData] = useState<IDropdown[]>([
-    { id: 1, name: "XAU/USD" },
+    { id: 1, name: "BTC/USD" },
     { id: 2, name: "GBP/USD" },
     { id: 3, name: "EUR/USD" }
   ]);

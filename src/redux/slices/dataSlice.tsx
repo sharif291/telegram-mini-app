@@ -2,14 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
 interface IBetData {
-  pair: Object;
+  pair: {
+    id: number;
+    name: string;
+  };
   amount: number;
   direction: string;
 }
 
 // Define the initial state using that type
 const initialState: IBetData = {
-  pair: {},
+  pair: { id: 0, name: "" },
   amount: 0,
   direction: "",
 };
@@ -22,7 +25,7 @@ const dataSlice = createSlice({
       return { ...state, pair: action.payload };
     },
     setAmount: (state, action) => {
-      return { ...state, amount: action.payload };
+      return { ...state, amount: parseFloat(action.payload) };
     },
     setDirection: (state, action) => {
       return { ...state, direction: action.payload };

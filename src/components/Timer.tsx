@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-function Timer() {
-  const [counter, setCounter] = useState(5);
+function Timer({ amountOfTime }: { amountOfTime: number }) {
+  const [counter, setCounter] = useState(amountOfTime);
 
   useEffect(() => {
     let timer: number;
