@@ -4,7 +4,7 @@ function Timer({ amountOfTime }: { amountOfTime: number }) {
   const [counter, setCounter] = useState(amountOfTime);
 
   useEffect(() => {
-    let timer: number;
+    let timer: NodeJS.Timeout;
     if (counter > 0) timer = setInterval(() => setCounter(counter - 1), 1000);
     return () => clearInterval(timer);
   }, [counter]);
