@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 import Timer from "./Timer";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { resetData, state } from "../redux/slices/dataSlice";
-import axios from "axios";
-
-// import { io } from "socket.io-client";
-// const socket = io("wss://delayed.polygon.io/options");
-// console.log(socket);
+import { websocketClient } from "@polygon.io/client-js";
 
 type PropTypes = {
   toogleRunPrediction: VoidFunction;
@@ -24,36 +20,39 @@ function PredictionComponent({ toogleRunPrediction }: PropTypes) {
     .split("T")[0];
   console.log(yesterdayDate);
   useEffect(() => {
-    axios
-      .get(
-        `https://api.polygon.io/v1/open-close/crypto/${pair[0]}/${pair[1]}/${yesterdayDate}?adjusted=true&apiKey=fpUJXdyu7Fq7ogCphUtxMpT8_0loGPLN`
-      )
-      .then((res) => {
-        if (res.data.close) {
-          setCurrentPrice(res.data.close);
+    const cryptoWS = websocketClient(
+      "a6JcpKT2gWKMOcNjLTQt9YX4U5RbN81J"
+    ).crypto();
+
+    cryptoWS.onmessage = ({ data }: { data: any }) => {
+      const [message] = JSON.parse(data);
+      cryptoWS.send(
+        `{ "action": "subscribe", "params": "XT.X:${pair[0]}-${pair[1]}" }`
+      );
+      switch (message.ev) {
+        case "XT":
+          console.log("price", message.p);
+          setCurrentPrice(message.p);
           if (direction == "UP")
-            setPredictedPrice(parseFloat(res.data.close) + amount);
-          else setPredictedPrice(res.data.close - amount);
-        }
-      });
-    const updateData = setTimeout(() => {
-      axios
-        .get(
-          `https://api.polygon.io/v1/open-close/crypto/${pair[0]}/${pair[1]}/${yesterdayDate}?adjusted=true&apiKey=fpUJXdyu7Fq7ogCphUtxMpT8_0loGPLN`
-        )
-        .then((res) => {
-          if (res.data.close) {
-            setCurrentPrice(res.data.close);
-          }
-        });
-    }, 20000);
+            setPredictedPrice(parseFloat(message.p) + amount);
+          else setPredictedPrice(message.p - amount);
+          break;
+        case "A":
+          // your trade message handler
+          break;
+      }
+    };
+    return () => {
+      cryptoWS.close();
+    };
+  }, [currentPrice, predictedPrice]);
+  useEffect(() => {
     const _resetData = setTimeout(() => {
       dispatch(resetData());
       toogleRunPrediction();
     }, 30000);
 
     return () => {
-      clearTimeout(updateData);
       clearTimeout(_resetData);
     };
   }, []);
