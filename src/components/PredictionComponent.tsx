@@ -62,7 +62,7 @@ function PredictionComponent({ toogleRunPrediction }: PropTypes) {
       <Timer amountOfTime={10}></Timer>
       <div className="w-[300px] h-[150px] border-black p-2 border-[1px] m-auto mt-[20px] mb-[20px]">
         <p className=" text-left font-semibold text-2xl">
-          Current Price(yesterday's close)
+          Current Price
         </p>
         <div className="border-black p-2 border-[1px] bg-green-500 font-bold ">
           <span className="text-5xl">{currentPrice} </span>
