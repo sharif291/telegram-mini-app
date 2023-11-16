@@ -1,21 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 export default function SearchableDropdown({
   allItem,
   isLoading,
-  propsToSet,
-  propsToShow,
+  propsToSet
 }: {
   allItem: { title: string; value: any }[];
   isLoading: boolean;
   propsToSet: any;
-  propsToShow: any;
 }) {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  // useEffect(() => {
-  //   if (query.length > 0) setIsOpen(true);
-  // }, [query.length]);
-
   const searchHandler = (
     data: { title: string; value: string }[],
     searchValue: string
@@ -59,7 +53,6 @@ export default function SearchableDropdown({
           data={listToShow}
           setQuery={setQuery}
           propsToSet={propsToSet}
-          propsToShow={propsToShow}
         />
       </form>
     </div>
@@ -84,7 +77,7 @@ function SearchResultList({
   data,
   setQuery,
   propsToSet,
-  propsToShow,
+
   setIsOpen,
 }: {
   isLoading: boolean;
@@ -95,7 +88,6 @@ function SearchResultList({
   }[];
   setQuery: Function;
   propsToSet: any;
-  propsToShow: any;
   setIsOpen: any;
 }) {
   return (

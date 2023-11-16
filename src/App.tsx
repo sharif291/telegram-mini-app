@@ -139,7 +139,6 @@ function App() {
                       { title: "GBP/USD", value: "GBP/USD" },
                       { title: "EUR/USD", value: "EUR/USD" },
                     ]}
-                    propsToShow={pair}
                     propsToSet={setPair}
                   ></SearchableDropdown>
                 </div>
@@ -158,7 +157,6 @@ function App() {
                       { title: "100", value: 100 },
                       { title: "150", value: 150 },
                     ]}
-                    propsToShow={amount}
                     propsToSet={setAmount}
                   ></SearchableDropdown>
                 </div>
@@ -200,7 +198,7 @@ function App() {
                 <div className=" flex justify-center items-center">
                   <div className="mr-2 text-white">75%</div>
                   <div className="mr-2 text-[#FEFD38]">
-                    ${amount ? amount * .75 : 0}
+                    ${amount ? amount * 0.75 : 0}
                   </div>
                   <div className="">USD</div>
                 </div>
@@ -282,29 +280,57 @@ function App() {
               </div>
               {predictedPrice && currentPriceAfterTime && stage == "DONE" && (
                 <>
-                  {currentPriceAfterTime > predictedPrice ? (
-                    <div className="mt-2 h-[48px] flex pl-4 pr-4 pt-1 pb-1 justify-between items-center border border-[#564a76] rounded-[25px] text-white text-[14px] font-[600]">
-                      <div className="flex justify-center items-center">
-                        <img className="ml-[-18px]" src={dollarStruc}></img>
-                        <p className="ml-2">Potential win:</p>
-                      </div>
-                      <div className=" flex justify-center items-center">
-                        <div className="">{amount} USD</div>
-                      </div>
-                    </div>
+                  {direction == "UP" ? (
+                    <>
+                      {currentPriceAfterTime > predictedPrice ? (
+                        <div className="mt-2 h-[48px] flex pl-4 pr-4 pt-1 pb-1 justify-between items-center border border-[#564a76] rounded-[25px] text-white text-[14px] font-[600]">
+                          <div className="flex justify-center items-center">
+                            <img className="ml-[-18px]" src={dollarStruc}></img>
+                            <p className="ml-2">Potential win:</p>
+                          </div>
+                          <div className=" flex justify-center items-center">
+                            <div className="">{amount} USD</div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="mt-2 h-[48px] flex pl-4 pr-4 pt-1 pb-1 justify-between items-center border border-[#564a76] rounded-[25px] text-white text-[14px] font-[600]">
+                          <div className="flex justify-center items-center">
+                            <img className="ml-[-18px]" src={PoutingFace}></img>
+                            <p className="ml-2">Potential loss:</p>
+                          </div>
+                          <div className=" flex justify-center items-center">
+                            <div className="">-{amount} USD</div>
+                          </div>
+                        </div>
+                      )}
+                    </>
                   ) : (
-                    <div className="mt-2 h-[48px] flex pl-4 pr-4 pt-1 pb-1 justify-between items-center border border-[#564a76] rounded-[25px] text-white text-[14px] font-[600]">
-                      <div className="flex justify-center items-center">
-                        <img className="ml-[-18px]" src={PoutingFace}></img>
-                        <p className="ml-2">Potential loss:</p>
-                      </div>
-                      <div className=" flex justify-center items-center">
-                        <div className="">-{amount} USD</div>
-                      </div>
-                    </div>
+                    <>
+                      {currentPriceAfterTime > predictedPrice ? (
+                        <div className="mt-2 h-[48px] flex pl-4 pr-4 pt-1 pb-1 justify-between items-center border border-[#564a76] rounded-[25px] text-white text-[14px] font-[600]">
+                          <div className="flex justify-center items-center">
+                            <img className="ml-[-18px]" src={PoutingFace}></img>
+                            <p className="ml-2">Potential loss:</p>
+                          </div>
+                          <div className=" flex justify-center items-center">
+                            <div className="">-{amount} USD</div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="mt-2 h-[48px] flex pl-4 pr-4 pt-1 pb-1 justify-between items-center border border-[#564a76] rounded-[25px] text-white text-[14px] font-[600]">
+                          <div className="flex justify-center items-center">
+                            <img className="ml-[-18px]" src={dollarStruc}></img>
+                            <p className="ml-2">Potential win:</p>
+                          </div>
+                          <div className=" flex justify-center items-center">
+                            <div className="">{amount} USD</div>
+                          </div>
+                        </div>
+                      )}
+                    </>
                   )}
                   <p
-                    className="m-auto text-center mt-10 bg-[white] w-[200px] p-4"
+                    className="submit-btn m-auto text-center mt-10 bg-[white] w-[200px] p-4"
                     onClick={() => {
                       console.log("Reset State");
                       setBg("bg-blue");
@@ -321,24 +347,6 @@ function App() {
                   </p>
                 </>
               )}
-              {/* <div className="mt-2 h-[48px] flex pl-4 pr-4 pt-1 pb-1 justify-between items-center border border-[#564a76] rounded-[25px] text-white text-[14px] font-[600]">
-                <div className="flex justify-center items-center">
-                  <img className="ml-[-18px]" src={dollarStruc}></img>
-                  <p className="ml-2">Potential win:</p>
-                </div>
-                <div className=" flex justify-center items-center">
-                  <div className="">5 USD</div>
-                </div>
-              </div>
-              <div className="mt-2 h-[48px] flex pl-4 pr-4 pt-1 pb-1 justify-between items-center border border-[#564a76] rounded-[25px] text-white text-[14px] font-[600]">
-                <div className="flex justify-center items-center">
-                  <img className="ml-[-18px]" src={PoutingFace}></img>
-                  <p className="ml-2">Potential loss:</p>
-                </div>
-                <div className=" flex justify-center items-center">
-                  <div className="">-5 USD</div>
-                </div>
-              </div> */}
             </>
           )}
         </div>
